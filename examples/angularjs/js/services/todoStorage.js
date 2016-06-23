@@ -13,7 +13,7 @@ angular.module('todomvc')
 
 		// Detect if an API backend is present. If so, return the API module, else
 		// hand off the localStorage adapter
-		return $http.get('/api')
+		return $http.get('http://localhost:55654/api/ping')
 			.then(function () {
 				return $injector.get('api');
 			}, function () {
@@ -27,7 +27,7 @@ angular.module('todomvc')
 		var store = {
 			todos: [],
 
-			api: $resource('/api/todos/:id', null,
+			api: $resource('http://localhost:55654/api/todo/:id', null,
 				{
 					update: { method:'PUT' }
 				}

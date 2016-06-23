@@ -9,6 +9,7 @@ angular.module('todomvc')
 	.controller('TodoCtrl', function TodoCtrl($scope, $routeParams, $filter, store) {
 		'use strict';
 
+		var counter = 0;
 		var todos = $scope.todos = store.todos;
 
 		$scope.newTodo = '';
@@ -37,11 +38,19 @@ angular.module('todomvc')
 			if (!newTodo.title) {
 				return;
 			}
+			
+			if (counter === 3) {
+				throw new Error('BANG outside promise!')
+			}
 
+			counter++;
 			$scope.saving = true;
 			store.insert(newTodo)
 				.then(function success() {
 					$scope.newTodo = '';
+					if (counter === 2) {
+						throw new Error('BANG!');
+					}
 				})
 				.finally(function () {
 					$scope.saving = false;

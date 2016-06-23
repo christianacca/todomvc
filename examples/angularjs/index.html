@@ -63,13 +63,30 @@
 				<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
 			</footer>
 		</script>
+		<script src="vendor/app-insights/ai.js"></script>
+		<script type="text/javascript">   
+			var snippet = {   
+				config: {   
+					instrumentationKey: "472c807a-3a27-4261-84e9-97424ed9d665"
+				}   
+			};   
+			var init = new Microsoft.ApplicationInsights.Initialization(snippet);   
+			var appInsights = init.loadAppInsights();
+			appInsights.setAuthenticatedUserContext("christianacca", "5E98F5A8-C02C-4FF3-ADDF-731E26204014")
+			appInsights.context.addTelemetryInitializer(function (envelope) {
+				console.log(envelope);
+			});
+			appInsights.trackPageView();
+		</script>   
 		<script src="node_modules/todomvc-common/base.js"></script>
 		<script src="node_modules/angular/angular.js"></script>
 		<script src="node_modules/angular-route/angular-route.js"></script>
 		<script src="node_modules/angular-resource/angular-resource.js"></script>
+		<script src="node_modules/angular-cc-appinsights/dist/angular-cc-appinsights.js"></script>
 		<script src="js/app.js"></script>
 		<script src="js/controllers/todoCtrl.js"></script>
 		<script src="js/services/todoStorage.js"></script>
+		<script src="js/services/appInsights/sessionIdTelemetryInitializer.js"></script>
 		<script src="js/directives/todoFocus.js"></script>
 		<script src="js/directives/todoEscape.js"></script>
 	</body>
