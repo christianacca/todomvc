@@ -33,13 +33,7 @@ angular.module('todomvc', ['ngRoute', 'ngResource', 'cc-appinsights'])
 			});
 	})
 	.config(function (ccAppInsightsProvider) {
-		// we're not using session or user tracking, therefore don't want SDK sending cookies
-		// there is currently no supported way of doing this, therefore using monkey patching hack
-		Microsoft.ApplicationInsights.Util.setCookie = angular.noop;
-		
-
 		ccAppInsightsProvider.configure({
-			addPageViewCorrelationHeader: true,
 			telemetryInitializers: ['sessionIdTelemetryInitializer', function(envelope) {
 				envelope.tags['ai.user.id'] = 'christianacca';
 			}]

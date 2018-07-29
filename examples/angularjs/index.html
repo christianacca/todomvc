@@ -63,11 +63,13 @@
 				<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
 			</footer>
 		</script>
-		<script src="vendor/app-insights/ai.js"></script>
+		<script src="vendor/app-insights/ai-1.0.18.js"></script>
 		<script type="text/javascript">   
 			var snippet = {   
 				config: {   
-					instrumentationKey: "472c807a-3a27-4261-84e9-97424ed9d665"
+					instrumentationKey: "f2657029-e7a6-4c3e-902f-4abdb048bd04",
+					isCookieUseDisabled: true,
+					enableCorsCorrelation: true
 				}   
 			};   
 			var init = new Microsoft.ApplicationInsights.Initialization(snippet);   
